@@ -1,0 +1,45 @@
+@model IEnumerable<PageDto>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mt-4">Sayfa Listesi</h2>
+
+<table class="table table-bordered table-striped mt-4">
+    <thead class="thead-dark">
+        <tr>
+            <th>Başlık</th>
+            <th>İçerik</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(x => x.ParentPageId == null)) 
+        {
+            <tr>
+                <td>@(item.Title?.Length > 30 ? item.Title.Substring(0, 30) + "..." : item.Title)</td>
+                <td>@(item.Content?.Length > 100 ? item.Content.Substring(0, 100) + "..." : item.Content)</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Page", new { id = item.Id })" class="btn btn-sm btn-warning">Düzenle</a>
+                    <a href="@Url.Action("Delete", "Page", new { id = item.Id })" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+
+            @foreach (var subPage in Model.Where(x => x.ParentPageId == item.Id))
+            {
+                <tr>
+                    <td style="padding-left: 30px;">— @(subPage.Title?.Length > 30 ? subPage.Title.Substring(0, 30) + "..." : subPage.Title)</td>
+                    <td>@(subPage.Content?.Length > 100 ? subPage.Content.Substring(0, 100) + "..." : subPage.Content)</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Page", new { id = subPage.Id })" class="btn btn-sm btn-warning">Düzenle</a>
+                        <a href="@Url.Action("Delete", "Page", new { id = subPage.Id })" class="btn btn-sm btn-danger">Sil</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Page")" class="btn btn-success">Yeni Sayfa Ekle</a>
+

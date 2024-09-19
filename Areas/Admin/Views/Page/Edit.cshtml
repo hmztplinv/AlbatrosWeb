@@ -1,0 +1,31 @@
+@model UpdatePageDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sayfa Düzenle</h2>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="Title">Başlık</label>
+        <input asp-for="Title" name="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Content">İçerik</label>
+        <textarea asp-for="Content" name="Content" class="form-control ckeditor"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="ParentPageId">Üst Sayfa</label>
+        <select asp-for="ParentPageId" class="form-control" name="ParentPageId" asp-items="@(new SelectList(ViewBag.ParentPages, "Id", "Title", Model.ParentPageId))">
+            <option value="">Ana Sayfa</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>
+
+<script>
+    CKEDITOR.replace('Content', {
+        removePlugins: 'easyimage,cloudservices'  // Uyarıya sebep olan eklentileri devre dışı bırakır.
+    });
+</script>
