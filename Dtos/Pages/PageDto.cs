@@ -6,4 +6,8 @@ public class PageDto
     public bool IsDeleted { get; set; }
     public int? ParentPageId { get; set; }
     public List<PageDto> SubPages { get; set; } = new List<PageDto>();
+
+    public bool IsInMenu { get; set; }
+    public int? MenuPosition { get; set; }
+    public bool IsVisible { get; set; }
 }

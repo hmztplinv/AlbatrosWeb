@@ -4,14 +4,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger mt-3">
-        @TempData["ErrorMessage"]
-    </div>
-}
-
 <h2 class="mt-4">Sayfa Listesi</h2>
 
 <table class="table table-bordered table-striped mt-4">
@@ -19,6 +11,9 @@
         <tr>
             <th>Başlık</th>
             <th>İçerik</th>
+            <th>Menüde Görünürlük</th>
+            <th>Pozisyon</th>
+            <th>Görünürlük</th>
             <th>İşlemler</th>
         </tr>
     </thead>
@@ -27,7 +22,10 @@
         {
             <tr>
                 <td>@(item.Title?.Length > 30 ? item.Title.Substring(0, 30) + "..." : item.Title)</td>
-                <td>@(item.Content?.Length > 100 ? item.Content.Substring(0, 100) + "..." : item.Content)</td>
+                <td>@(item.Content?.Length > 100 ? item.Content.Substring(0, 30) + "..." : item.Content)</td>
+                <td>@(item.IsInMenu ? "Evet" : "Hayır")</td>
+                <td>@item.MenuPosition</td>
+                <td>@(item.IsVisible ? "Evet" : "Hayır")</td>
                 <td>
                     <a href="@Url.Action("Edit", "Page", new { id = item.Id })" class="btn btn-sm btn-warning">Düzenle</a>
                     <a href="@Url.Action("Delete", "Page", new { id = item.Id })" class="btn btn-sm btn-danger">Sil</a>
@@ -38,7 +36,10 @@
             {
                 <tr>
                     <td style="padding-left: 30px;">— @(subPage.Title?.Length > 30 ? subPage.Title.Substring(0, 30) + "..." : subPage.Title)</td>
-                    <td>@(subPage.Content?.Length > 100 ? subPage.Content.Substring(0, 100) + "..." : subPage.Content)</td>
+                    <td>@(subPage.Content?.Length > 100 ? subPage.Content.Substring(0, 30) + "..." : subPage.Content)</td>
+                    <td>@(subPage.IsInMenu ? "Evet" : "Hayır")</td>
+                    <td>@subPage.MenuPosition</td>
+                    <td>@(subPage.IsVisible ? "Evet" : "Hayır")</td>
                     <td>
                         <a href="@Url.Action("Edit", "Page", new { id = subPage.Id })" class="btn btn-sm btn-warning">Düzenle</a>
                         <a href="@Url.Action("Delete", "Page", new { id = subPage.Id })" class="btn btn-sm btn-danger">Sil</a>
@@ -50,4 +51,5 @@
 </table>
 
 <a href="@Url.Action("Create", "Page")" class="btn btn-success">Yeni Sayfa Ekle</a>
+
 

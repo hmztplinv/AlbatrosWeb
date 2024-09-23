@@ -7,26 +7,38 @@
 <h2>Sayfa Düzenle</h2>
 
 <form asp-action="Edit" method="post">
-    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="UpdatePageDto.Id" value="@Model.Id" />
     <div class="form-group">
         <label asp-for="Title">Başlık</label>
-        <input name="Title" class="form-control" value="@Model.Title" />
+        <input name="UpdatePageDto.Title" class="form-control" value="@Model.Title" />
     </div>
     <div class="form-group">
         <label asp-for="Content">İçerik</label>
-        <textarea name="Content" class="form-control ckeditor">@Model.Content</textarea>
-
+        <textarea name="UpdatePageDto.Content" class="form-control ckeditor">@Model.Content</textarea>
     </div>
     <div class="form-group">
         <label asp-for="ParentPageId">Üst Sayfa</label>
-        <select name="ParentPageId" class="form-control">
+        <select name="UpdatePageDto.ParentPageId" class="form-control">
             <option value="">Ana Sayfa</option>
             @foreach (var item in ViewBag.ParentPages)
             {
             <option value="@item.Id" @(item.Id == Model.ParentPageId ? "selected" : "")>@item.Title</option>
             }
         </select>
-
+    </div>
+    <div class="form-group">
+        <label asp-for="IsInMenu">Menüde Göster</label>
+        <input type="hidden" name="IsInMenu" value="false" />
+    <input type="checkbox" name="UpdatePageDto.IsInMenu" value="true" @(Model.IsInMenu ? "checked" : "") />
+    </div>
+    <div class="form-group">
+        <label asp-for="MenuPosition">Menü Pozisyonu</label>
+        <input name="UpdatePageDto.MenuPosition" type="number" class="form-control" value="@Model.MenuPosition" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IsVisible">Görünür mü?</label>
+        <input type="hidden" name="IsVisible" value="false" />
+        <input type="checkbox" name="UpdatePageDto.IsVisible" value="true" @(Model.IsVisible ? "checked" : "") />
     </div>
     <button type="submit" class="btn btn-primary">Kaydet</button>
 </form>

@@ -6,26 +6,48 @@
 
 <h2>Yeni Sayfa Ekle</h2>
 
-<form asp-action="Create" method="post">
+<form method="post">
     <div class="form-group">
-        <label asp-for="CreatePageDto.Title">Başlık</label>
-        <input asp-for="CreatePageDto.Title" name="Title" class="form-control" />
+        <label for="Title">Başlık</label>
+        <input type="text" name="CreatePageDto.Title" class="form-control" value="@Model.CreatePageDto?.Title" />
     </div>
+    
     <div class="form-group">
-        <label asp-for="CreatePageDto.Content">İçerik</label>
-        <textarea asp-for="CreatePageDto.Content" id="Content" name="Content" class="form-control ckeditor"></textarea>
+        <label for="Content">İçerik</label>
+        <textarea name="CreatePageDto.Content" class="form-control ckeditor">@Model.CreatePageDto?.Content</textarea>
     </div>
+    
     <div class="form-group">
-        <label asp-for="CreatePageDto.ParentPageId">Üst Sayfa</label>
-        <select asp-for="CreatePageDto.ParentPageId" name="ParentPageId" class="form-control">
+        <label for="ParentPageId">Üst Sayfa</label>
+        <select name="CreatePageDto.ParentPageId" class="form-control">
             <option value="">Ana Sayfa</option>
             @foreach (var item in Model.ParentPages)
             {
-                <option value="@item.Id">@item.Title</option>
+                <option value="@item.Id" @(item.Id == Model.CreatePageDto?.ParentPageId ? "selected" : "")>@item.Title</option>
             }
         </select>
     </div>
+    
+    <div class="form-group">
+        <label for="MenuPosition">Menü Pozisyonu</label>
+        <input type="number" name="CreatePageDto.MenuPosition" class="form-control" value="@Model.CreatePageDto?.MenuPosition" />
+    </div>
+    
+    <div class="form-group">
+        <label for="IsInMenu">Menüde Gösterilsin mi?</label>
+        <input type="hidden" name="IsInMenu" value="false" /> <!-- checkbox işaretlenmezse false olur -->
+        <input type="checkbox" name="CreatePageDto.IsInMenu" value="true" @(Model.CreatePageDto?.IsInMenu == true ? "checked" : "") />
+    </div>
+    
+    <div class="form-group">
+        <label for="IsVisible">Görünür Olsun mu?</label>
+        <input type="hidden" name="IsVisible" value="false" /> <!-- checkbox işaretlenmezse false olur -->
+        <input type="checkbox" name="CreatePageDto.IsVisible" value="true" @(Model.CreatePageDto?.IsVisible == true ? "checked" : "") />
+    </div>
+    
     <button type="submit" class="btn btn-primary">Ekle</button>
 </form>
+
+
 
 

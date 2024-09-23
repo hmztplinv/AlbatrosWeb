@@ -70,8 +70,15 @@ public class PageController : Controller
     {
         if (ModelState.IsValid)
         {
+            Console.WriteLine($"IsInMenu: {createPageDto.IsInMenu}");
+        Console.WriteLine($"IsVisible: {createPageDto.IsVisible}");
             await _pageService.AddPageAsync(createPageDto);
             return RedirectToAction("Index");
+        }
+
+        foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+        {
+            Console.WriteLine(error.ErrorMessage);
         }
 
         // Model geçersizse tekrar formu yükleyeceğiz, fakat ViewModel nesnesi ile.
@@ -100,6 +107,13 @@ public class PageController : Controller
         // Eğer alt sayfalar yoksa sayfayı sil
         await _pageService.DeletePageAsync(id);
         return RedirectToAction(nameof(Index));
+    }
+
+    // Menüde sayfa gösterme
+    public async Task<IActionResult> Menu()
+    {
+        var menuPages = await _pageService.GetMenuPagesAsync();
+        return View(menuPages);
     }
 
 }

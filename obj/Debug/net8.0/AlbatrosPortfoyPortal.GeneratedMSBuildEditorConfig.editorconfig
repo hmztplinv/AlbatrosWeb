@@ -18,6 +18,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\hmztp\Desktop\HT\AlbatrosWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/hmztp/Desktop/HT/AlbatrosWeb/Areas/Admin/Views/Announcement/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQW5ub3VuY2VtZW50XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmztp/Desktop/HT/AlbatrosWeb/Areas/Admin/Views/Announcement/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQW5ub3VuY2VtZW50XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmztp/Desktop/HT/AlbatrosWeb/Areas/Admin/Views/Announcement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQW5ub3VuY2VtZW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hmztp/Desktop/HT/AlbatrosWeb/Areas/Admin/Views/Page/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -28,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/hmztp/Desktop/HT/AlbatrosWeb/Areas/Admin/Views/Page/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmztp/Desktop/HT/AlbatrosWeb/Areas/Admin/Views/Page/Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZVxNZW51LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hmztp/Desktop/HT/AlbatrosWeb/Areas/Admin/Views/Shared/_Layout.cshtml]

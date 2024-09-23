@@ -5,4 +5,8 @@ public class UpdatePageDto
     public string? Content { get; set; }
     public bool IsDeleted { get; set; }= false;
     public int? ParentPageId { get; set; }
+
+    public bool IsInMenu { get; set; }
+    public int? MenuPosition { get; set; }
+    public bool IsVisible { get; set; }
 }

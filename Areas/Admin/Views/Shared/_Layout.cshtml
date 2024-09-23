@@ -18,13 +18,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // Sayfa yüklendiğinde sadece bir kez CKEditor'u initialize edelim
+        if (CKEDITOR.instances['Content']) {
+            CKEDITOR.instances['Content'].destroy(); // Daha önce var olan CKEditor örneğini kaldırıyoruz.
+        }
+
         CKEDITOR.replace('Content', {
             extraPlugins: 'uploadimage',
-            filebrowserUploadUrl: '/Admin/Media/UploadImage',
-            filebrowserImageUploadUrl: '/Admin/Media/UploadImage',
-
+            filebrowserUploadUrl: '/Admin/UploadImage',
+            filebrowserImageUploadUrl: '/Admin/UploadImage'
         });
     </script>
+
 
 
 </body>

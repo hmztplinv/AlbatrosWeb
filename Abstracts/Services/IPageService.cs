@@ -17,6 +17,7 @@ public interface IPageService
     Task<List<PageDto>> GetTopLevelPagesAsync();
 
     Task<bool> HasChildPagesAsync(int parentId);
+    Task<List<PageDto>> GetMenuPagesAsync();
 
 }
 

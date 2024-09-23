@@ -1,0 +1,23 @@
+@model CreateAnnouncementDto
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Create Announcement</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Title">Başlık</label>
+        <input name="CreateAnnouncementDto.Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Content">İçerik</label>
+        <textarea name="CreateAnnouncementDto.Content" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsPublished">IsPublished</label>
+        <input type="hidden" name="IsPublished" value="false" />
+        <input type="checkbox" name="CreateAnnouncementDto.IsPublished" value="true" @(Model.IsPublished ? "checked" : "") />
+        
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -13,6 +13,9 @@ builder.Services.AddScoped<IPageRepository, PageRepository>();
 builder.Services.AddScoped<IPageService, PageService>();
 builder.Services.AddScoped<ISliderRepository, SliderRepository>();
 builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<IAnnouncementService, AnnouncementService>();
+builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 

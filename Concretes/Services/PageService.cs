@@ -15,7 +15,6 @@ public class PageService : IPageService
     public async Task AddPageAsync(CreatePageDto createPageDto)
     {
         var page = _mapper.Map<Page>(createPageDto);
-        Console.WriteLine(page.Title);
         await _pageRepository.AddAsync(page);
     }
 
@@ -82,6 +81,23 @@ public class PageService : IPageService
         return childPages.Any();
     }
 
+    public async Task<List<PageDto>> GetMenuPagesAsync()
+{
+    var allPages = await _pageRepository.GetAllAsync();
+    var menuPages = allPages
+        .Where(p => p.IsInMenu && p.IsVisible)
+        .OrderBy(p => p.MenuPosition)
+        .ToList();
 
+    // Parent-Child ilişkisini kuruyoruz
+    var topLevelPages = menuPages.Where(p => p.ParentPageId == null).ToList();
+
+    foreach (var topLevelPage in topLevelPages)
+    {
+        topLevelPage.SubPages = menuPages.Where(p => p.ParentPageId == topLevelPage.Id).ToList();
+    }
+
+    return _mapper.Map<List<PageDto>>(topLevelPages);
+}
 
 }
