@@ -4,6 +4,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger mt-3">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
 <h2 class="mt-4">Sayfa Listesi</h2>
 
 <table class="table table-bordered table-striped mt-4">

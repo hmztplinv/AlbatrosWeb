@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using AutoMapper;
 
 public class PageService : IPageService
@@ -74,4 +75,13 @@ public class PageService : IPageService
         var subPages = await _pageRepository.FindAsync(p => p.ParentPageId == parentPageId);
         return _mapper.Map<IEnumerable<PageDto>>(subPages);
     }
+
+    public async Task<bool> HasChildPagesAsync(int parentId)
+    {
+        var childPages = await _pageRepository.GetByConditionAsync(p => p.ParentPageId == parentId);
+        return childPages.Any();
+    }
+
+
+
 }

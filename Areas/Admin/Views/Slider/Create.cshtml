@@ -1,0 +1,36 @@
+@model CreateSliderDto
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Yeni Slider Ekle</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+
+    <div class="mb-3">
+        <label for="Title" class="form-label">Başlık</label>
+        <input type="text" name="Title" class="form-control" id="Title" placeholder="Başlık girin" required>
+        <div class="invalid-feedback">
+            Lütfen başlık girin.
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="ImageUrl" class="form-label">Resim URL</label>
+        <input type="file" name="ImageFile" class="form-control" id="ImageUrl" placeholder="Resim URL'si girin" required>
+        <div class="invalid-feedback">
+            Lütfen geçerli bir URL girin.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Description" class="form-label">Açıklama</label>
+        <textarea name="Description" class="form-control ckeditor" id="Description" rows="4" placeholder="Açıklama girin"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ekle</button>
+    <a href="@Url.Action("Index", "Slider", new { area = "Admin" })" class="btn btn-secondary">İptal</a>
+</form>
+
+
+

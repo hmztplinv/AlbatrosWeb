@@ -4053,11 +4053,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hmztp\\Desktop\\AlbatrosPortfoyPortal\\AlbatrosPortfoyPortal.csproj",
+      "projectUniqueName": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\AlbatrosPortfoyPortal.csproj",
       "projectName": "AlbatrosPortfoyPortal",
-      "projectPath": "C:\\Users\\hmztp\\Desktop\\AlbatrosPortfoyPortal\\AlbatrosPortfoyPortal.csproj",
+      "projectPath": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\AlbatrosPortfoyPortal.csproj",
       "packagesPath": "C:\\Users\\hmztp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hmztp\\Desktop\\AlbatrosPortfoyPortal\\obj\\",
+      "outputPath": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hmztp\\AppData\\Roaming\\NuGet\\NuGet.Config",

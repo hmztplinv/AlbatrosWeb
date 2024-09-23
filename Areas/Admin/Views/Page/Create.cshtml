@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
         <label asp-for="CreatePageDto.Content">İçerik</label>
-        <textarea asp-for="CreatePageDto.Content" id="Content" name="Content" class="form-control"></textarea>
+        <textarea asp-for="CreatePageDto.Content" id="Content" name="Content" class="form-control ckeditor"></textarea>
     </div>
     <div class="form-group">
         <label asp-for="CreatePageDto.ParentPageId">Üst Sayfa</label>
@@ -28,8 +28,4 @@
     <button type="submit" class="btn btn-primary">Ekle</button>
 </form>
 
-<script>
-    CKEDITOR.replace('Content', {
-        removePlugins: 'easyimage,cloudservices'  // Uyarıya sebep olan eklentileri devre dışı bırakır.
-    });
-</script>
+

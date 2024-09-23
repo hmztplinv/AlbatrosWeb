@@ -1,8 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@section Slider {
+    <!-- Slider içeriği buraya gelecek -->
+    <div class="slider-content">
+        <h2>Hoş Geldiniz</h2>
+        <p>Sitemize hoş geldiniz!</p>
+    </div>
+}
+
+<h1>Anasayfa İçeriği</h1>
+<p>Bu, anasayfa için içerik bölümüdür.</p>

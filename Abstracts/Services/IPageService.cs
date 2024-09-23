@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 public interface IPageService
 {
     Task<PageDto> GetPageByIdAsync(int id);
@@ -13,5 +15,8 @@ public interface IPageService
     Task<UpdatePageDto> GetUpdatePageByIdAsync(int id);
 
     Task<List<PageDto>> GetTopLevelPagesAsync();
+
+    Task<bool> HasChildPagesAsync(int parentId);
+
 }
 

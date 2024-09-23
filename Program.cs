@@ -11,6 +11,8 @@ builder.Services.AddDbContext<AlbatrosPortfoyPortalDbContext>(options =>
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IPageRepository, PageRepository>();
 builder.Services.AddScoped<IPageService, PageService>();
+builder.Services.AddScoped<ISliderRepository, SliderRepository>();
+builder.Services.AddScoped<ISliderService, SliderService>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 

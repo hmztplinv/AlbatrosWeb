@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F0omvFhiQKrE4j0dgIlzRMBj0IR0N6VW1DthE+H/M/54i3m6euxyW+ml6DXxDxPcA/VhFdH45VI5pjXI9+wyzg==",
+  "dgSpecHash": "Ui67qn1du2H9DjY1yUBhwrYJLNwqaXbn1bquCaIC3+jBNLIK4qp7E2HxywS5dAOPGH65JZmY4rX4W5rLmdV4AQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hmztp\\Desktop\\AlbatrosPortfoyPortal\\AlbatrosPortfoyPortal.csproj",
+  "projectFilePath": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\AlbatrosPortfoyPortal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hmztp\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\hmztp\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

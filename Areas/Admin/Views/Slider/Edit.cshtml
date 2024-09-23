@@ -1,0 +1,40 @@
+@model UpdateSliderDto
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Slider Düzenle</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="ImageUrl" />
+
+    <div class="mb-3">
+        <label for="Title" class="form-label">Başlık</label>
+        <input name="Title" class="form-control" value="@Model.Title" placeholder="Başlık girin" required>
+        <div class="invalid-feedback">
+            Lütfen başlık girin.
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="ImageFile" class="form-label">Mevcut Resim</label><br />
+        <img src="@Model.ImageUrl" alt="Mevcut Resim" width="150" /><br /><br />
+
+        <label for="ImageFile" class="form-label">Yeni Resim Yükle (İsteğe Bağlı)</label>
+        <input type="file" name="ImageFile" class="form-control">
+        <div class="invalid-feedback">
+            Lütfen geçerli bir resim yükleyin.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Description" class="form-label">Açıklama</label>
+        <textarea name="Description" class="form-control ckeditor" placeholder="Açıklama girin">@Model.Description</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a href="@Url.Action("Index", "Slider", new { area = "Admin" })" class="btn btn-secondary">İptal</a>
+</form>
+
+

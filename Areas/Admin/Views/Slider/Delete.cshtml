@@ -1,0 +1,14 @@
+@model SliderDto
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Slider Sil</h2>
+
+<p>@Model.Title slider'ını silmek istediğinize emin misiniz?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a href="@Url.Action("Index", "Slider", new { area = "Admin" })" class="btn btn-secondary">İptal</a>
+</form>
