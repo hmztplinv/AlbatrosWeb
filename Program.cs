@@ -7,19 +7,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddCookie(options =>
         {
-            options.LoginPath = "/Account/Login";  // Eğer giriş yapılmadıysa yönlendirme sayfası
-            options.AccessDeniedPath = "/Account/AccessDenied"; // Yetkisiz erişim olduğunda yönlendirme sayfası
-            //options.LogoutPath = "/Account/Logout"; // Çıkış yapıldığında yönlendirme sayfası
-            options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Cookie expiration süresi
-            options.SlidingExpiration = true;  // Oturum süresini her talep ile yeniler
+            options.LoginPath = "/Account/Login";  
+            options.AccessDeniedPath = "/Account/AccessDenied"; 
+            //options.LogoutPath = "/Account/Logout"; 
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(30); 
+            options.SlidingExpiration = true;  
         });
 
-// Yetkilendirme işlemleri için
+
 builder.Services.AddAuthorization(options =>
  {
      options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
  });
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AlbatrosPortfoyPortalDbContext>(options =>
@@ -40,11 +39,10 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

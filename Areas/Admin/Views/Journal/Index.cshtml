@@ -4,13 +4,15 @@
 }
 <h2>Bültenler</h2>
 
-<a href="/Admin/Journal/Create" class="btn btn-primary">Bülten Ekle</a>
+<a href="/Admin/Journal/Create" class="btn btn-sm btn-success mb-3">Bülten Ekle</a>
+<a href="@Url.Action("Index", "Home")" class="btn btn-sm btn-info mb-3">Liste'ye Dön</a>
 
 <table class="table">
     <thead>
         <tr>
             <th>Başlık</th>
             <th>Açıklama</th>
+            <th>Dosya</th>
             <th>Yayın Tarihi</th>
             <th>İşlemler</th>
         </tr>
@@ -21,12 +23,19 @@
             <tr>
                 <td>@journal.Title</td>
                 <td>@journal.Description</td>
+                <td>
+                    <a href="@journal.FilePath" target="_blank">Dosyayı Görüntüle</a>
+                </td>
                 <td>@journal.PublishedDate.ToString("dd/MM/yyyy")</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@journal.Id" class="btn btn-warning">Edit</a>
-                    <form asp-action="Delete" asp-route-id="@journal.Id" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    
+                    @* <a href="@Url.Action("Edit", "Journal", new { id = journal.Id })"
+                        class="btn btn-sm btn-warning">Düzenle</a> *@
+                    <form action="@Url.Action("Delete", "Journal", new { id = journal.Id })" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+    @Html.AntiForgeryToken()
+</form>
+
                 </td>
             </tr>
         }

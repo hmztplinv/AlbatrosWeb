@@ -8,37 +8,42 @@ using Microsoft.AspNetCore.Mvc;
 public class AccountController : Controller
 {
     [HttpGet]
-    public IActionResult Login()
+    public IActionResult Login(string returnUrl = null)
     {
+        ViewData["ReturnUrl"] = returnUrl;
         return View();
     }
 
     [HttpPost]
-    public async Task<IActionResult> Login(string username, string password)
+public async Task<IActionResult> Login(string username, string password, string returnUrl = null)
+{
+    var adminUsername = "admin";
+    var adminPassword = "password123"; // todo : password hashing
+
+    if (username == adminUsername && password == adminPassword)
     {
-        // Sabit admin kullanıcı bilgileri
-        var adminUsername = "admin";
-        var adminPassword = "password123"; // Bu şifre daha güvenli şekilde hashlenmeli
-
-        if (username == adminUsername && password == adminPassword)
+        var claims = new List<Claim>
         {
-            // Kullanıcı doğrulandı, cookie'yi oluştur
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, username),
-                new Claim(ClaimTypes.Role, "Admin")
-            };
+            new Claim(ClaimTypes.Name, username),
+            new Claim(ClaimTypes.Role, "Admin")
+        };
 
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-
+        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+        {
+            return Redirect(returnUrl); 
+        }
+        else
+        {
             return RedirectToAction("Index", "Home", new { area = "Admin" });
         }
-
-        TempData["ErrorMessage"] = "Invalid username or password";
-        return View();
     }
+
+    TempData["ErrorMessage"] = "Invalid username or password";
+    return View();
+}
 
     [HttpPost]
     [ValidateAntiForgeryToken]

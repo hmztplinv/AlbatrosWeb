@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "P2vjt+bj6zfqVSjIkD6z9fPBzKOCbUKlAnEq/Z2+Pfc=",
+  "Hash": "MyBE737dxlxVkSZG344eXkA+0VqBcGPcuSeuGYeVEvI=",
   "Source": "AlbatrosPortfoyPortal",
   "BasePath": "_content/AlbatrosPortfoyPortal",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\files\\Test.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\logo.png",
+      "SourceId": "AlbatrosPortfoyPortal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\",
+      "BasePath": "_content/AlbatrosPortfoyPortal",
+      "RelativePath": "images/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logo.png"
     },
     {
       "Identity": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\sliders\\hmz.png",

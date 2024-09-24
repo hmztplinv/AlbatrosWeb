@@ -2,25 +2,30 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <h2>Bülten Ekle</h2>
 
-
-<form asp-action="Create" method="post" enctype="multipart/form-data">
-    <div>
-        <label>Title</label>
-        <input type="text" name="Title" value="@Model?.Title" />
+<form asp-action="Create" method="post" enctype="multipart/form-data" class="mt-4">
+    <div class="form-group">
+        <label for="Title">Başlık</label>
+        <input type="text" name="Title" value="@Model?.Title" class="form-control" placeholder="Başlık Girin" />
     </div>
-    <div>
-        <label>Description</label>
-        <textarea name="Description">@Model?.Description</textarea>
+    
+    <div class="form-group">
+        <label for="Description">Açıklama</label>
+        <textarea name="Description" class="form-control" rows="5" placeholder="Açıklama Girin">@Model?.Description</textarea>
     </div>
-    <div>
-        <label>Published Date</label>
-        <input type="date" name="PublishedDate" value="@Model?.PublishedDate.ToString("yyyy-MM-dd")" />
+    
+    <div class="form-group">
+        <label for="PublishedDate">Yayın Tarihi</label>
+        <input type="date" name="PublishedDate" value="@Model?.PublishedDate.ToString("yyyy-MM-dd")" class="form-control" />
     </div>
-    <div>
-        <label>File</label>
-        <input type="file" name="File" />
+    
+    <div class="form-group">
+        <label for="File">Dosya</label>
+        <input type="file" name="File" class="form-control-file" />
     </div>
-    <button type="submit">Create</button>
+    
+    <button type="submit" class="btn btn-primary mt-3">Ekle</button>
+    <a href="@Url.Action("Index", "Journal", new { area = "Admin" })" class="btn btn-secondary mt-3">İptal</a>
 </form>

@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\files\\Test.pdf"
     },
     {
+      "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
       "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\sliders\\hmz.png",
       "PackagePath": "staticwebassets\\images\\sliders\\hmz.png"
     },

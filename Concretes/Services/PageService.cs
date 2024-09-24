@@ -38,19 +38,19 @@ public class PageService : IPageService
             return null;
         }
 
-        var updatePageDto = _mapper.Map<UpdatePageDto>(page); // Dönüştürme işlemi burada
+        var updatePageDto = _mapper.Map<UpdatePageDto>(page);
         return updatePageDto;
     }
 
     public async Task<List<PageDto>> GetParentPagesAsync()
     {
-        var pages = await _pageRepository.GetAllAsync(); // Tüm sayfaları alıyoruz
+        var pages = await _pageRepository.GetAllAsync();
         return _mapper.Map<List<PageDto>>(pages);
     }
 
     public async Task<List<PageDto>> GetTopLevelPagesAsync()
     {
-        var pages = await _pageRepository.FindAsync(p => p.ParentPageId == null); // Sadece ana sayfalar
+        var pages = await _pageRepository.FindAsync(p => p.ParentPageId == null);
         return _mapper.Map<List<PageDto>>(pages);
     }
 
@@ -89,7 +89,6 @@ public class PageService : IPageService
         .OrderBy(p => p.MenuPosition)
         .ToList();
 
-    // Parent-Child ilişkisini kuruyoruz
     var topLevelPages = menuPages.Where(p => p.ParentPageId == null).ToList();
 
     foreach (var topLevelPage in topLevelPages)

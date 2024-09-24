@@ -7,7 +7,6 @@ public class AlbatrosPortfoyPortalDbContext : DbContext
     {
     }
 
-    // Entity'lerimizi DbSet olarak ekleyelim
     public DbSet<Page> Pages { get; set; }
     public DbSet<Menu> Menus { get; set; }
     public DbSet<Slider> Sliders { get; set; }
@@ -18,7 +17,6 @@ public class AlbatrosPortfoyPortalDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Parent-Child ilişkilendirmelerini yapalım
         modelBuilder.Entity<Page>()
             .HasMany(p => p.SubPages)
             .WithOne(p => p.ParentPage)

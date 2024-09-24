@@ -9,8 +9,7 @@ public interface IPageService
     Task AddPageAsync(CreatePageDto createPageDto);
     Task UpdatePageAsync(UpdatePageDto updatePageDto);
     Task DeletePageAsync(int id);
-    
-    // Alt sayfaları getir
+
     Task<IEnumerable<PageDto>> GetSubPagesAsync(int parentPageId);
     Task<UpdatePageDto> GetUpdatePageByIdAsync(int id);
 

@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -75,33 +76,42 @@ public async Task<IActionResult> Create(JournalDto journalDto, IFormFile file)
 
 
     // Edit Journal - GET
-    [HttpGet]
-    public async Task<IActionResult> Edit(int id)
-    {
-        var journal = await _journalService.GetJournalByIdAsync(id);
-        if (journal == null)
-        {
-            return NotFound();
-        }
+    // [HttpGet]
+    // public async Task<IActionResult> Edit(int id)
+    // {
+    //     var journal = await _journalService.GetJournalByIdAsync(id);
+    //     if (journal == null)
+    //     {
+    //         return NotFound();
+    //     }
+    //     var updateJournalDto = new UpdateJournalDto
+    // {
+    //     Id = journal.Id,
+    //     Title = journal.Title,
+    //     Description = journal.Description,
+    //     PublishedDate = journal.PublishedDate,
+    //     FilePath = journal.FilePath
+    // };
 
-        return View(journal);
-    }
+    // return View(updateJournalDto);
+    // }
 
-    // Edit Journal - POST
-    [HttpPost]
-    public async Task<IActionResult> Edit(int id, UpdateJournalDto updateJournalDto)
-    {
-        if (ModelState.IsValid)
-        {
-            await _journalService.UpdateJournalAsync(id, updateJournalDto);
-            return RedirectToAction("Index");
-        }
+    // // Edit Journal - POST
+    // [HttpPost]
+    // public async Task<IActionResult> Edit(int id, UpdateJournalDto updateJournalDto)
+    // {
+    //     if (ModelState.IsValid)
+    //     {
+    //         await _journalService.UpdateJournalAsync(id, updateJournalDto);
+    //         return RedirectToAction("Index");
+    //     }
 
-        return View(updateJournalDto);
-    }
+    //     return View(updateJournalDto);
+    // }
 
     // Delete Journal
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id)
     {
         await _journalService.DeleteJournalAsync(id);

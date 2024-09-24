@@ -2,30 +2,36 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="d-flex justify-content-start">
-<form action="/Account/Logout" method="post" style="display:inline;">
-    @Html.AntiForgeryToken()
-    <button class="btn btn-sm btn-danger justify-right mt-3 mb-2" type="submit">Çıkış Yap</button>
-</form>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Admin Paneli</h2>
+        <hr />
+        <img src="~/images/logo.png" alt="AlbatrosPortfoy Logo" width="150" height="100" />
+<hr />
+        <div class="alert alert-primary" role="alert">
+            Aşağıdaki menü den ilgili panel işlemleri gerçekleştirebilirsiniz! İletişim için "support@qtech.com.tr"
+            adresine
+            mail atabilirsiniz.
+        </div>
+        <ul class="list-group" style="font-size: large; color: black;font-weight: bolder;">
+            <li class="list-group-item">
+                <a href="@Url.Action("Index", "Page", new { area = "Admin" })">Sayfaları Yönet</a>
+            </li>
+            <li class="list-group-item">
+                <a href="@Url.Action("Index", "Slider", new { area = "Admin" })">Slider Yönetimi</a>
+            </li>
+            <li class="list-group-item">
+                <a href="@Url.Action("Index", "Announcement", new { area = "Admin" })">Duyuru Yönetimi</a>
+            </li>
+            <li class="list-group-item">
+                <a href="@Url.Action("Index", "Journal", new { area = "Admin" })">Bülten Yönetimi</a>
+            </li>
+            <div class="d-flex justify-content-start">
+                <form action="/Account/Logout" method="post" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-sm btn-danger justify-right mt-3 mb-2" type="submit">Çıkış Yap</button>
+                </form>
+            </div>
+        </ul>
+    </div>
 </div>
-
-<h2>Admin Paneli</h2>
-
-<div class="alert alert-primary" role="alert">
- Aşağıdaki menü den ilgili panel işlemleri gerçekleştirebilirsiniz!
-</div>
-<ul class="list-group" style="font-size: large; color: black;font-weight: bolder;">
-    <li class="list-group-item">
-        <a href="@Url.Action("Index", "Page", new { area = "Admin" })">Sayfaları Yönet</a>
-    </li>
-    <li class="list-group-item">
-        <a href="@Url.Action("Index", "Slider", new { area = "Admin" })">Slider Yönetimi</a>
-    </li>
-    <li class="list-group-item">
-        <a href="@Url.Action("Index", "Announcement", new { area = "Admin" })">Duyuru Yönetimi</a>
-    </li>
-    <li class="list-group-item">
-        <a href="@Url.Action("Index", "Journal", new { area = "Admin" })">Bülten Yönetimi</a>
-    </li>
-    <!-- Diğer işlemler buraya eklenebilir -->
-</ul>

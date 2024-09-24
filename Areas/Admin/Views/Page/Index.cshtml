@@ -6,7 +6,11 @@
 
 <h2 class="mt-4">Sayfa Listesi</h2>
 
-<table class="table table-bordered table-striped mt-4">
+<a href="@Url.Action("Create", "Page")" class="btn btn-sm btn-success mb-3">Yeni Sayfa Ekle</a>
+<a href="@Url.Action("Index", "Home")" class="btn btn-sm btn-info mb-3">Liste'ye Dön</a>
+
+
+<table class="table table-bordered table-striped">
     <thead class="thead-dark">
         <tr>
             <th>Başlık</th>
@@ -50,7 +54,5 @@
     </tbody>
 </table>
 
-<a href="@Url.Action("Create", "Page")" class="btn btn-success">Yeni Sayfa Ekle</a>
-<a href="@Url.Action("Index", "Home")" class="btn btn-info">Liste'ye Dön</a>
 
 
