@@ -12,6 +12,7 @@ public class AlbatrosPortfoyPortalDbContext : DbContext
     public DbSet<Menu> Menus { get; set; }
     public DbSet<Slider> Sliders { get; set; }
     public DbSet<Announcement> Announcements { get; set; }
+    public DbSet<Journal> Journals { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

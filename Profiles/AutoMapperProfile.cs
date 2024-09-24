@@ -19,5 +19,9 @@ public class AutoMapperProfile : Profile
         CreateMap<UpdateAnnouncementDto, Announcement>().ReverseMap();
         CreateMap<UpdateAnnouncementDto, AnnouncementDto>().ReverseMap();
 
+        CreateMap<Journal, JournalDto>().ReverseMap();
+        CreateMap<UpdateJournalDto, Journal>().ReverseMap();
+        CreateMap<UpdateJournalDto, JournalDto>().ReverseMap();
+
     }
 }

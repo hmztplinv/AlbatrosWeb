@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\files\\Test.pdf",
+      "PackagePath": "staticwebassets\\files\\Test.pdf"
+    },
+    {
       "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\sliders\\hmz.png",
       "PackagePath": "staticwebassets\\images\\sliders\\hmz.png"
     },
@@ -259,6 +263,10 @@
     {
       "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\uploads\\Test.pdf",
+      "PackagePath": "staticwebassets\\uploads\\Test.pdf"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.AlbatrosPortfoyPortal.Microsoft.AspNetCore.StaticWebAssets.props",

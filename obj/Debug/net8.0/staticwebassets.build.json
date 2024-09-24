@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2zz13t0oTkr5P2jKJgJgw97qyFP/ZqE66f3SYgCmWpk=",
+  "Hash": "P2vjt+bj6zfqVSjIkD6z9fPBzKOCbUKlAnEq/Z2+Pfc=",
   "Source": "AlbatrosPortfoyPortal",
   "BasePath": "_content/AlbatrosPortfoyPortal",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\files\\Test.pdf",
+      "SourceId": "AlbatrosPortfoyPortal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\",
+      "BasePath": "_content/AlbatrosPortfoyPortal",
+      "RelativePath": "files/Test.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\Test.pdf"
     },
     {
       "Identity": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\sliders\\hmz.png",
@@ -1269,6 +1288,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\uploads\\Test.pdf",
+      "SourceId": "AlbatrosPortfoyPortal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\",
+      "BasePath": "_content/AlbatrosPortfoyPortal",
+      "RelativePath": "uploads/Test.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Test.pdf"
     }
   ]
 }

@@ -1,0 +1,26 @@
+@model JournalDto
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Bülten Ekle</h2>
+
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Title</label>
+        <input type="text" name="Title" value="@Model?.Title" />
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea name="Description">@Model?.Description</textarea>
+    </div>
+    <div>
+        <label>Published Date</label>
+        <input type="date" name="PublishedDate" value="@Model?.PublishedDate.ToString("yyyy-MM-dd")" />
+    </div>
+    <div>
+        <label>File</label>
+        <input type="file" name="File" />
+    </div>
+    <button type="submit">Create</button>
+</form>
