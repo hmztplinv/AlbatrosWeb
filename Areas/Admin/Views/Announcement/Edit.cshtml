@@ -2,7 +2,7 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<h2>Edit Announcement</h2>
+<h2>Duyuru Güncelle</h2>
 
 <form asp-action="Edit" method="post">
     <input type="hidden" asp-for="Id" />
@@ -19,5 +19,6 @@
         <input type="hidden" asp-for="IsPublished" value="false" />
         <input type="checkbox" name="IsPublished" value="true" @(Model.IsPublished ? "checked" : "") />
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="@Url.Action("Index", "Announcement", new { area = "Admin" })" class="btn btn-secondary">İptal</a>
 </form>

@@ -1,0 +1,28 @@
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-start">
+<form action="/Account/Logout" method="post" style="display:inline;">
+    @Html.AntiForgeryToken()
+    <button class="btn btn-sm btn-danger justify-right mt-3 mb-2" type="submit">Çıkış Yap</button>
+</form>
+</div>
+
+<h2>Admin Paneli</h2>
+
+<div class="alert alert-primary" role="alert">
+ Aşağıdaki menü den ilgili panel işlemleri gerçekleştirebilirsiniz!
+</div>
+<ul class="list-group" style="font-size: large; color: black;font-weight: bolder;">
+    <li class="list-group-item">
+        <a href="@Url.Action("Index", "Page", new { area = "Admin" })">Sayfaları Yönet</a>
+    </li>
+    <li class="list-group-item">
+        <a href="@Url.Action("Index", "Slider", new { area = "Admin" })">Slider Yönetimi</a>
+    </li>
+    <li class="list-group-item">
+        <a href="@Url.Action("Index", "Announcement", new { area = "Admin" })">Duyuru Yönetimi</a>
+    </li>
+    <!-- Diğer işlemler buraya eklenebilir -->
+</ul>

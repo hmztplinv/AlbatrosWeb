@@ -1,7 +1,24 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.LoginPath = "/Account/Login";  // Eğer giriş yapılmadıysa yönlendirme sayfası
+            options.AccessDeniedPath = "/Account/AccessDenied"; // Yetkisiz erişim olduğunda yönlendirme sayfası
+            //options.LogoutPath = "/Account/Logout"; // Çıkış yapıldığında yönlendirme sayfası
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Cookie expiration süresi
+            options.SlidingExpiration = true;  // Oturum süresini her talep ile yeniler
+        });
+
+// Yetkilendirme işlemleri için
+builder.Services.AddAuthorization(options =>
+ {
+     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+ });
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -33,16 +50,19 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

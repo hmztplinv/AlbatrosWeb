@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class PageController : Controller
 {
     private readonly IPageService _pageService;

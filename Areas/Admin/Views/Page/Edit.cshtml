@@ -41,6 +41,7 @@
         <input type="checkbox" name="UpdatePageDto.IsVisible" value="true" @(Model.IsVisible ? "checked" : "") />
     </div>
     <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="@Url.Action("Index", "Page", new { area = "Admin" })" class="btn btn-secondary">İptal</a>
 </form>
 
 

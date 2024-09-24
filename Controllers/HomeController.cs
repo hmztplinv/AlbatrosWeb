@@ -38,6 +38,12 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpGet("/Admin/AccessDenied")]
+    public IActionResult AccessDenied()
+    {
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();
