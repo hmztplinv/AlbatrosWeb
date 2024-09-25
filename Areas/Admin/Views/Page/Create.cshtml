@@ -14,7 +14,7 @@
     
     <div class="form-group">
         <label for="Content">İçerik</label>
-        <textarea name="CreatePageDto.Content" class="form-control ckeditor">@Model.CreatePageDto?.Content</textarea>
+        <textarea name="CreatePageDto.Content" id="Content" class="form-control ckeditor">@Model.CreatePageDto?.Content</textarea>
     </div>
     
     <div class="form-group">
@@ -35,13 +35,13 @@
     
     <div class="form-group">
         <label for="IsInMenu">Menüde Gösterilsin mi?</label>
-        <input type="hidden" name="IsInMenu" value="false" /> <!-- checkbox işaretlenmezse false olur -->
+        <input type="hidden" name="IsInMenu" value="false" />
         <input type="checkbox" name="CreatePageDto.IsInMenu" value="true" @(Model.CreatePageDto?.IsInMenu == true ? "checked" : "") />
     </div>
     
     <div class="form-group">
         <label for="IsVisible">Görünür Olsun mu?</label>
-        <input type="hidden" name="IsVisible" value="false" /> <!-- checkbox işaretlenmezse false olur -->
+        <input type="hidden" name="IsVisible" value="false" />
         <input type="checkbox" name="CreatePageDto.IsVisible" value="true" @(Model.CreatePageDto?.IsVisible == true ? "checked" : "") />
     </div>
     

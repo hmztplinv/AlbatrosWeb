@@ -9,4 +9,8 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult TestError()
+    {
+        throw new Exception("Test Exception: Bu bir hata testi.");
+    }
 }

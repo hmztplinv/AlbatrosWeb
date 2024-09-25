@@ -14,7 +14,6 @@ public class JournalController : Controller
         _journalService = journalService;
     }
 
-    // Journals List
     [HttpGet]
     public async Task<IActionResult> Index()
     {
@@ -22,99 +21,59 @@ public class JournalController : Controller
         return View(journals);
     }
 
-    // Create New Journal - GET
     [HttpGet]
     public IActionResult Create()
     {
         return View();
     }
 
-    // Create New Journal - POST
     [HttpPost]
-public async Task<IActionResult> Create(JournalDto journalDto, IFormFile file)
-{
-    if (file != null && file.Length > 0)
+    public async Task<IActionResult> Create(JournalDto journalDto, IFormFile file)
     {
-        // Dosyanın yükleneceği dizin
-        var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files");
-
-        // Eğer yükleme dizini yoksa oluştur
-        if (!Directory.Exists(uploads))
+        if (file != null && file.Length > 0)
         {
-            Directory.CreateDirectory(uploads);
+            var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files");
+
+            if (!Directory.Exists(uploads))
+            {
+                Directory.CreateDirectory(uploads);
+            }
+
+            var filePath = Path.Combine(uploads, file.FileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            journalDto.FilePath = "/files/" + file.FileName;
         }
 
-        // Dosya adı ve tam yolu
-        var filePath = Path.Combine(uploads, file.FileName);
 
-        // Dosyayı belirtilen dizine kopyala
-        using (var stream = new FileStream(filePath, FileMode.Create))
+        if (!ModelState.IsValid)
         {
-            await file.CopyToAsync(stream);
+            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+            foreach (var error in errors)
+            {
+                Console.WriteLine(error);
+            }
+            return View(journalDto);
         }
 
-        // JournalDto'da FilePath alanına kaydedilen dosya yolunu ekle
-        journalDto.FilePath = "/files/" + file.FileName;
+
+        await _journalService.AddJournalAsync(journalDto);
+        TempData["Message"] = "Bülten başarıyla eklendi.";
+        TempData["MessageType"] = "success";
+        return RedirectToAction("Index");
     }
-    
-    // ModelState doğrulaması
-    if (!ModelState.IsValid)
-    {
-        var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-        foreach (var error in errors)
-        {
-            Console.WriteLine(error);
-        }
-        return View(journalDto);
-    }
 
-    // Kayıt işlemi
-    await _journalService.AddJournalAsync(journalDto);
-    return RedirectToAction("Index");
-}
-
-
-
-    // Edit Journal - GET
-    // [HttpGet]
-    // public async Task<IActionResult> Edit(int id)
-    // {
-    //     var journal = await _journalService.GetJournalByIdAsync(id);
-    //     if (journal == null)
-    //     {
-    //         return NotFound();
-    //     }
-    //     var updateJournalDto = new UpdateJournalDto
-    // {
-    //     Id = journal.Id,
-    //     Title = journal.Title,
-    //     Description = journal.Description,
-    //     PublishedDate = journal.PublishedDate,
-    //     FilePath = journal.FilePath
-    // };
-
-    // return View(updateJournalDto);
-    // }
-
-    // // Edit Journal - POST
-    // [HttpPost]
-    // public async Task<IActionResult> Edit(int id, UpdateJournalDto updateJournalDto)
-    // {
-    //     if (ModelState.IsValid)
-    //     {
-    //         await _journalService.UpdateJournalAsync(id, updateJournalDto);
-    //         return RedirectToAction("Index");
-    //     }
-
-    //     return View(updateJournalDto);
-    // }
-
-    // Delete Journal
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id)
     {
         await _journalService.DeleteJournalAsync(id);
+        TempData["Message"] = "Bülten başarıyla silindi.";
+        TempData["MessageType"] = "success";
         return RedirectToAction("Index");
     }
 }

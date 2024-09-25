@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
+      "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\sliders\\Test.pdf",
+      "PackagePath": "staticwebassets\\images\\sliders\\Test.pdf"
+    },
+    {
       "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\sliders\\hmz.png",
       "PackagePath": "staticwebassets\\images\\sliders\\hmz.png"
     },
@@ -31,6 +35,22 @@
     {
       "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\sliders\\slider-2.jpg",
       "PackagePath": "staticwebassets\\images\\sliders\\slider-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\uploads\\5e8133f8-e808-4b71-9aff-75a600b7ba1a.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\5e8133f8-e808-4b71-9aff-75a600b7ba1a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\uploads\\61dfd882-1f5e-4255-8ace-a1cd231d851b.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\61dfd882-1f5e-4255-8ace-a1cd231d851b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\uploads\\9fa572d6-69a0-44b5-b084-77e70b427945.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\9fa572d6-69a0-44b5-b084-77e70b427945.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\uploads\\cfb7e2dc-4927-40f1-81dd-89f8050ef5a8.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\cfb7e2dc-4927-40f1-81dd-89f8050ef5a8.jpg"
     },
     {
       "Id": "C:\\Users\\hmztp\\Desktop\\HT\\AlbatrosWeb\\wwwroot\\images\\uploads\\d565a65b-66bd-4d59-b496-21a869af4312.jpg",

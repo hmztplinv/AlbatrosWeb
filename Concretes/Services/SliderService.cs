@@ -45,7 +45,7 @@ public class SliderService : ISliderService
     public async Task UpdateSliderAsync(UpdateSliderDto sliderDto)
     {
         var slider = await _sliderRepository.GetByIdAsync(sliderDto.Id);
-        if(slider != null)
+        if (slider != null)
         {
             slider.Title = sliderDto.Title;
             slider.ImageUrl = sliderDto.ImageUrl;

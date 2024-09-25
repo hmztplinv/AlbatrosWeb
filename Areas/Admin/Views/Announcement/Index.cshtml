@@ -18,8 +18,8 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Title</td>
-                <td>@item.Content</td>
+                <td>@(item.Title?.Length > 30 ? item.Title.Substring(0, 30) + "..." : item.Title)</td>
+                <td>@(item.Content?.Length > 100 ? item.Content.Substring(0, 100) + "..." : item.Content)</td>
                 <td>@(item.IsPublished ? "Evet" : "Hayır")</td>
 
                 <td>

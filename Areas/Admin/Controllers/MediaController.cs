@@ -19,7 +19,9 @@ public class MediaController : Controller
                 upload.CopyTo(fileStream);
             }
 
-            var url = "/images/uploads/" + fileName; // Yüklenen dosyanın URL'si
+            var url = "/images/uploads/" + fileName;
+            TempData["Message"] = "Dosya başarıyla yüklendi.";
+            TempData["MessageType"] = "success";
             return Json(new { uploaded = true, url });
         }
 

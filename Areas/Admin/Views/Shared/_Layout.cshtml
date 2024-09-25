@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Proje Adı</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
 </head>
 
 <body>
     <div class="container mt-3">
-        
-
         @if (TempData["ErrorMessage"] != null)
         {
             <div class="alert alert-danger">
@@ -23,23 +21,52 @@
         @RenderBody()
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <script>
-        // Sayfa yüklendiğinde sadece bir kez CKEditor'u initialize edelim
         if (CKEDITOR.instances['Content']) {
-            CKEDITOR.instances['Content'].destroy(); // Daha önce var olan CKEditor örneğini kaldırıyoruz.
+            CKEDITOR.instances['Content'].destroy(); 
         }
 
         CKEDITOR.replace('Content', {
             extraPlugins: 'uploadimage',
-            filebrowserUploadUrl: '/Admin/UploadImage',
-            filebrowserImageUploadUrl: '/Admin/UploadImage'
+            filebrowserUploadUrl: '/Admin/Media/UploadImage',
+            filebrowserImageUploadUrl: '/Admin/Media/UploadImage'
         });
     </script>
 
+    <script>
+        function showNotification(message, type) {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "timeOut": "5000",
+            };
+            if (type === 'success') {
+                toastr.success(message);
+            } else if (type === 'error') {
+                toastr.error(message);
+            } else if (type === 'info') {
+                toastr.info(message);
+            } else if (type === 'warning') {
+                toastr.warning(message);
+            }
+        }
+    </script>
 
+    <script>
+        $(document).ready(function() {
+            var message = '@TempData["Message"]';
+            var messageType = '@TempData["MessageType"]';
+            if (message) {
+                showNotification(message, messageType);
+            }
+        });
+    </script>
 
 </body>
 

@@ -24,8 +24,8 @@ public class AnnouncementController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-       var model = new CreateAnnouncementDto();
-    return View(model); 
+        var model = new CreateAnnouncementDto();
+        return View(model);
     }
 
     [HttpPost]
@@ -34,6 +34,8 @@ public class AnnouncementController : Controller
         if (ModelState.IsValid)
         {
             await _announcementService.AddAnnouncementAsync(createAnnouncementDto);
+            TempData["Message"] = "Duyuru başarıyla eklendi.";
+            TempData["MessageType"] = "success";
             return RedirectToAction(nameof(Index));
         }
         return View(createAnnouncementDto);
@@ -58,6 +60,8 @@ public class AnnouncementController : Controller
         if (ModelState.IsValid)
         {
             await _announcementService.UpdateAnnouncementAsync(updateAnnouncementDto);
+            TempData["Message"] = "Duyuru başarıyla güncellendi.";
+            TempData["MessageType"] = "info";
             return RedirectToAction(nameof(Index));
         }
         return View(updateAnnouncementDto);
@@ -66,6 +70,8 @@ public class AnnouncementController : Controller
     public async Task<IActionResult> Delete(int id)
     {
         await _announcementService.DeleteAnnouncementAsync(id);
+        TempData["Message"] = "Duyuru başarıyla silindi.";
+        TempData["MessageType"] = "success";
         return RedirectToAction(nameof(Index));
     }
 }

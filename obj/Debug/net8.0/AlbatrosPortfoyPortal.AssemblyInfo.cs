@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AlbatrosPortfoyPortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0ff22113b84b21a25b69fe9b2f1442be1620b66")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9d43fac944bdfe2f49ce56b3ff52df8a9110dca")]
 [assembly: System.Reflection.AssemblyProductAttribute("AlbatrosPortfoyPortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AlbatrosPortfoyPortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

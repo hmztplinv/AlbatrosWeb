@@ -23,20 +23,16 @@ public class PageController : Controller
     public async Task<IActionResult> Edit(int id)
     {
 
-        var updatePageDto = await _pageService.GetUpdatePageByIdAsync(id); // Servisten doğrudan UpdatePageDto geliyor
+        var updatePageDto = await _pageService.GetUpdatePageByIdAsync(id);
         if (updatePageDto == null)
         {
             return NotFound();
         }
-
-        // Tüm sayfaları alarak üst sayfa seçimini sağlamak için
         var parentPages = await _pageService.GetTopLevelPagesAsync();
         ViewBag.ParentPages = parentPages;
 
         return View(updatePageDto);
     }
-
-
 
     [HttpPost]
     public async Task<IActionResult> Edit(UpdatePageDto updatePageDto)
@@ -44,6 +40,8 @@ public class PageController : Controller
         if (ModelState.IsValid)
         {
             await _pageService.UpdatePageAsync(updatePageDto);
+            TempData["Message"] = "Sayfa başarıyla güncellendi.";
+            TempData["MessageType"] = "info";
             return RedirectToAction(nameof(Index));
         }
 
@@ -53,7 +51,6 @@ public class PageController : Controller
     [HttpGet]
     public async Task<IActionResult> Create()
     {
-        // Sadece ana sayfaları getir
         var pages = await _pageService.GetTopLevelPagesAsync();
 
         var model = new CreatePageViewModel
@@ -66,15 +63,14 @@ public class PageController : Controller
     }
 
 
-
     [HttpPost]
     public async Task<IActionResult> Create(CreatePageDto createPageDto)
     {
         if (ModelState.IsValid)
         {
-            Console.WriteLine($"IsInMenu: {createPageDto.IsInMenu}");
-        Console.WriteLine($"IsVisible: {createPageDto.IsVisible}");
             await _pageService.AddPageAsync(createPageDto);
+            TempData["Message"] = "Sayfa başarıyla eklendi.";
+            TempData["MessageType"] = "success";
             return RedirectToAction("Index");
         }
 
@@ -83,17 +79,15 @@ public class PageController : Controller
             Console.WriteLine(error.ErrorMessage);
         }
 
-        // Model geçersizse tekrar formu yükleyeceğiz, fakat ViewModel nesnesi ile.
-        var pages = await _pageService.GetTopLevelPagesAsync(); // Parent sayfaları tekrar yüklemek gerekiyor
+        var pages = await _pageService.GetTopLevelPagesAsync();
         var model = new CreatePageViewModel
         {
             ParentPages = pages.ToList(),
             CreatePageDto = createPageDto
         };
 
-        return View(model); // View'e CreatePageViewModel döndürülmeli
+        return View(model);
     }
-
 
     public async Task<IActionResult> Delete(int id)
     {
@@ -101,17 +95,16 @@ public class PageController : Controller
 
         if (hasChildPages)
         {
-            // Alt sayfaları olduğu için uyarı göster
             TempData["ErrorMessage"] = "Bu sayfa altında bağlı alt sayfalar bulunmaktadır. Lütfen önce alt sayfaları silin.";
             return RedirectToAction(nameof(Index));
         }
-
-        // Eğer alt sayfalar yoksa sayfayı sil
         await _pageService.DeletePageAsync(id);
+        TempData["Message"] = "Sayfa başarıyla silindi.";
+        TempData["MessageType"] = "success";
         return RedirectToAction(nameof(Index));
     }
 
-    // Menüde sayfa gösterme
+    [HttpGet]
     public async Task<IActionResult> Menu()
     {
         var menuPages = await _pageService.GetMenuPagesAsync();

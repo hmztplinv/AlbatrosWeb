@@ -82,21 +82,21 @@ public class PageService : IPageService
     }
 
     public async Task<List<PageDto>> GetMenuPagesAsync()
-{
-    var allPages = await _pageRepository.GetAllAsync();
-    var menuPages = allPages
-        .Where(p => p.IsInMenu && p.IsVisible)
-        .OrderBy(p => p.MenuPosition)
-        .ToList();
-
-    var topLevelPages = menuPages.Where(p => p.ParentPageId == null).ToList();
-
-    foreach (var topLevelPage in topLevelPages)
     {
-        topLevelPage.SubPages = menuPages.Where(p => p.ParentPageId == topLevelPage.Id).ToList();
-    }
+        var allPages = await _pageRepository.GetAllAsync();
+        var menuPages = allPages
+            .Where(p => p.IsInMenu && p.IsVisible)
+            .OrderBy(p => p.MenuPosition)
+            .ToList();
 
-    return _mapper.Map<List<PageDto>>(topLevelPages);
-}
+        var topLevelPages = menuPages.Where(p => p.ParentPageId == null).ToList();
+
+        foreach (var topLevelPage in topLevelPages)
+        {
+            topLevelPage.SubPages = menuPages.Where(p => p.ParentPageId == topLevelPage.Id).ToList();
+        }
+
+        return _mapper.Map<List<PageDto>>(topLevelPages);
+    }
 
 }
